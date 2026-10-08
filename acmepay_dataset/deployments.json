@@ -1,0 +1,146 @@
+[
+  {
+    "id": "DEP-001",
+    "service": "payment-api",
+    "version": "2.14.3",
+    "deployed_at": "2026-10-06T09:03:00",
+    "status": "success",
+    "previous_version": "2.14.2"
+  },
+  {
+    "id": "DEP-002",
+    "service": "payment-api",
+    "version": "2.14.3",
+    "deployed_at": "2026-10-08T11:56:00",
+    "status": "success",
+    "previous_version": "2.14.2"
+  },
+  {
+    "id": "DEP-010",
+    "service": "payment-api",
+    "version": "2.8.9",
+    "deployed_at": "2025-02-18T21:44:36",
+    "status": "success",
+    "previous_version": "2.8.8"
+  },
+  {
+    "id": "DEP-013",
+    "service": "payment-api",
+    "version": "2.10.8",
+    "deployed_at": "2026-03-12T14:39:31",
+    "status": "success",
+    "previous_version": "2.10.7"
+  },
+  {
+    "id": "DEP-015",
+    "service": "payment-api",
+    "version": "2.11.9",
+    "deployed_at": "2025-04-22T06:48:08",
+    "status": "success",
+    "previous_version": "2.11.8"
+  },
+  {
+    "id": "DEP-018",
+    "service": "payment-api",
+    "version": "2.9.3",
+    "deployed_at": "2026-02-10T06:08:34",
+    "status": "success",
+    "previous_version": "2.9.2"
+  },
+  {
+    "id": "DEP-020",
+    "service": "payment-api",
+    "version": "2.12.1",
+    "deployed_at": "2026-03-28T00:57:35",
+    "status": "success",
+    "previous_version": "2.12.0"
+  },
+  {
+    "id": "DEP-023",
+    "service": "payment-api",
+    "version": "2.5.8",
+    "deployed_at": "2026-05-17T03:12:42",
+    "status": "success",
+    "previous_version": "2.5.7"
+  },
+  {
+    "id": "DEP-025",
+    "service": "payment-api",
+    "version": "2.12.4",
+    "deployed_at": "2026-08-02T16:00:28",
+    "status": "success",
+    "previous_version": "2.12.3"
+  },
+  {
+    "id": "DEP-028",
+    "service": "payment-api",
+    "version": "2.11.8",
+    "deployed_at": "2026-06-24T16:47:06",
+    "status": "success",
+    "previous_version": "2.11.7"
+  },
+  {
+    "id": "DEP-030",
+    "service": "payment-api",
+    "version": "2.7.3",
+    "deployed_at": "2025-04-29T07:34:14",
+    "status": "success",
+    "previous_version": "2.7.2"
+  },
+  {
+    "id": "DEP-033",
+    "service": "payment-api",
+    "version": "2.5.0",
+    "deployed_at": "2025-05-04T06:33:54",
+    "status": "success",
+    "previous_version": "2.4.9"
+  },
+  {
+    "id": "DEP-035",
+    "service": "payment-api",
+    "version": "2.10.3",
+    "deployed_at": "2026-04-01T01:08:14",
+    "status": "success",
+    "previous_version": "2.10.2"
+  },
+  {
+    "id": "DEP-038",
+    "service": "payment-api",
+    "version": "2.11.1",
+    "deployed_at": "2026-03-06T08:53:37",
+    "status": "success",
+    "previous_version": "2.11.0"
+  },
+  {
+    "id": "DEP-040",
+    "service": "payment-api",
+    "version": "2.6.5",
+    "deployed_at": "2026-08-24T16:57:27",
+    "status": "success",
+    "previous_version": "2.6.4"
+  },
+  {
+    "id": "DEP-043",
+    "service": "payment-api",
+    "version": "2.8.6",
+    "deployed_at": "2026-04-26T04:17:26",
+    "status": "success",
+    "previous_version": "2.8.5"
+  },
+  {
+    "id": "DEP-045",
+    "service": "payment-api",
+    "version": "2.5.1",
+    "deployed_at": "2026-05-26T09:42:05",
+    "status": "success",
+    "previous_version": "2.5.0"
+  },
+  {
+    "id": "DEP-048",
+    "service": "payment-api",
+    "version": "2.10.7",
+    "deployed_at": "2025-03-09T00:19:19",
+    "status": "success",
+    "previous_version": "2.10.6"
+  }
+]

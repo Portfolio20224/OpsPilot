@@ -1,0 +1,2141 @@
+[
+  {
+    "request_id": "666c6fb1-f75e-449b-b07e-dd7d63b6ef00",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T12:27:08.776194Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.8,
+      "reasoning": "Historical incidents INC-0500 and INC-0510 show that for the payment-api service, incidents categorized as connection_pool_exhaustion with symptoms of HTTP 5xx and database connection timeouts (similarity score of 0.94) were confirmed to be caused by database connection pool exhaustion due to an N+1 query in a new release."
+    },
+    "recommended_actions": [],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": []
+    },
+    "duration_ms": 5045.234400000481,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "ba9efc96-fafd-4327-90c5-b5363bbd17a3",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T12:45:18.973887Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.8,
+      "reasoning": "Historical incidents INC-0500 and INC-0510 show that for the payment-api service, incidents categorized as connection_pool_exhaustion with symptoms of HTTP 5xx and database connection timeouts (similarity score of 0.94) were confirmed to be caused by database connection pool exhaustion due to an N+1 query in a new release."
+    },
+    "recommended_actions": [],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": []
+    },
+    "duration_ms": 4591.433000001416,
+    "validation_status": "approved",
+    "validated_at": "2026-10-08T14:46:31.695561+02:00",
+    "validated_by": "operator-001",
+    "validation_comment": "Rollback approved after reviewing the deployment correlation."
+  },
+  {
+    "request_id": "753bade1-20a6-4bef-bf25-5dd5afa7b31c",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T12:50:25.135128Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "Historical incidents INC-0500 and INC-0510 for the 'payment-api' service share a high similarity score of approximately 0.94 and identical symptoms ('HTTP 5xx' and 'database connection timeouts'). In both of these confirmed historical cases, the root cause was diagnosed as database connection pool exhaustion due to an N+1 query in a new release."
+    },
+    "recommended_actions": [],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": []
+    },
+    "duration_ms": 4372.612500003015,
+    "validation_status": "rejected",
+    "validated_at": "2026-10-08T14:51:21.183858+02:00",
+    "validated_by": "operator-002",
+    "validation_comment": "Recommendation rejected. Operator will investigate database metrics first."
+  },
+  {
+    "request_id": "8594cf31-0aac-4949-9a12-929a0a850abc",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T12:59:52.295150Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "Historical incidents INC-0500 and INC-0510 for the 'payment-api' service share a high similarity score of approximately 0.94 and identical symptoms ('HTTP 5xx' and 'database connection timeouts'). In both of these confirmed historical cases, the root cause was diagnosed as database connection pool exhaustion due to an N+1 query in a new release."
+    },
+    "recommended_actions": [],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": []
+    },
+    "duration_ms": 4246.158900001319,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "682ec8bb-0f3a-4132-87f3-78b470e3b744",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T13:11:44.054817Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "Historical incidents INC-0500 and INC-0510 for the 'payment-api' service share a high similarity score of approximately 0.94 and identical symptoms ('HTTP 5xx' and 'database connection timeouts'). In both of these confirmed historical cases, the root cause was diagnosed as database connection pool exhaustion due to an N+1 query in a new release."
+    },
+    "recommended_actions": [],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": []
+    },
+    "duration_ms": 4574.559100001352,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "bc22efe6-5588-4f5f-a6a4-60ae4ddeb1c3",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T13:16:23.374321Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "The incident occurred 240 seconds after the deployment of version 2.14.3 of the payment-api service (DEP-001). Historical incidents INC-0500 and INC-0510 for the same service share a high similarity score of approximately 0.94 and were confirmed to be caused by database connection pool exhaustion due to an N+1 query introduced in a new release."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-001",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 5129.44580000476,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "ba90c55a-381c-4d90-b5b8-c118b702e3ca",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T13:19:04.211016Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-001, version 2.14.3) occurred on the payment-api service just 240 seconds before the incident. Historical incidents INC-0500 and INC-0510 for the same service share a high similarity score of approximately 0.94 and confirm that previous new releases caused database connection pool exhaustion due to an N+1 query."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-001",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 5070.330699993065,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "7cd9ad94-ceec-4336-ade9-235789d91895",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:23.430004Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011200005246791989,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "56553a99-76c8-44eb-b852-ff7cd06c9ead",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:23.452751Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.01170000177808106,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "354781c6-5dfc-4f2e-8274-cbe11ad1e55d",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:23.488022Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.009700001101009548,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "98a0fe9c-2faa-4d47-816b-1437d8a53827",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:34.429622Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011400006769690663,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "5ebba2d9-3749-4832-9772-30b0b0fd4fd0",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:34.463098Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.018699996871873736,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "43907cad-294b-4291-8c32-3e75082eb11c",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:33:34.477712Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.009999996109399945,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "dbafd745-10e5-424a-b866-843758a2fc9f",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:41:03.289265Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.022000000171829015,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "2b5d6c7d-c5ac-40dc-927c-802dc49e7745",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:41:03.349248Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.03210000431863591,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "41eab04e-ed4f-4bea-81f5-a1428fd5d678",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T14:41:03.385712Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.02479999966453761,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "4119a2d2-ffde-4bac-9c68-0aa740def59d",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T15:30:31.703144Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.03670000296551734,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "befc7166-82b1-4b5a-b1cf-3f584bcb347f",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T15:30:31.767209Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.08309999975608662,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "e6a909bd-22b6-4584-a144-bd96a4929bd5",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T15:30:31.808966Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.03239999932702631,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "53f1d734-0d5a-4058-84bd-14bc2322d95b",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T15:35:10.740858Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred 240 seconds before the incident. Historical incidents INC-0500 and INC-0510 for the same service share a high similarity score (0.94) and confirm that new releases introduced a 'Database connection pool exhaustion due to N+1 query in new release', which matches the pattern of this deployment-triggered incident."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 5316.715089999889,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null
+  },
+  {
+    "request_id": "c8d6dfa3-c7be-4fc1-b47c-9b284b445d5d",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:06.391578Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011100004485342652,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "eb1c9ebf-f494-4aac-af86-4a81462a1df9",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:06.440482Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.014500001270789653,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "c4a97c55-972c-4d8e-98e9-a9cd9b9ad140",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:06.461247Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.014899997040629387,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "aeb03f71-0699-4f3a-8f29-c02536ce0972",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:22.961089Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011500000255182385,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "9705c299-36e0-422b-a8b2-315b20cabf0f",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:23.003612Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.022600004740525037,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "2e89ef12-8cea-4e4c-951c-fe940d54edf6",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:09:23.019273Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.012299999070819467,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "f38c5787-0a94-400a-b2e3-f03cd4f3fe9a",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T16:15:35.013519Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred just 240 seconds before the incident. This matches the pattern of highly similar historical incidents (INC-0500 and INC-0510, similarity score 0.94) for the same service, which were confirmed to be caused by database connection pool exhaustion due to an N+1 query introduced in the new release."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 5021.842764000212,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": null
+  },
+  {
+    "request_id": "9bdbbd15-70fb-4a8b-beb4-6ea7c937825d",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:42:54.784523Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.015500001609325409,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.015500001609325409
+  },
+  {
+    "request_id": "94eee887-7efc-493c-996f-1466f6fc7a83",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:42:54.808032Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.012699994840659201,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.012699994840659201
+  },
+  {
+    "request_id": "446dc3d5-bab8-423c-9b52-27848cf4967f",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T16:42:54.824462Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011799995263572782,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.011799995263572782
+  },
+  {
+    "request_id": "55b44ce5-7275-49e6-86e2-287857bdf086",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T16:44:03.975113Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred just 240 seconds before the incident. This matches the pattern of highly similar historical incidents (INC-0500 and INC-0510, similarity score 0.94) for the same service, which were confirmed to be caused by database connection pool exhaustion due to an N+1 query introduced in the new release."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 4835.738910000146,
+    "validation_status": "rejected",
+    "validated_at": "2026-10-08T16:45:22.050842Z",
+    "validated_by": "operator-003",
+    "validation_comment": "Recommendation rejected. Operator will investigate database metrics first",
+    "retrieved_incident_count": 3,
+    "deployment_correlation_count": 1,
+    "llm_duration_ms": 4826.438154000243,
+    "total_duration_ms": 4835.738910000146
+  },
+  {
+    "request_id": "1328c6f8-a9e7-461e-8068-0ba5a5d31819",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T16:46:32.839004Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred just 240 seconds before the incident. This matches the pattern of highly similar historical incidents (INC-0500 and INC-0510, similarity score 0.94) for the same service, which were confirmed to be caused by database connection pool exhaustion due to an N+1 query introduced in the new release."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 4691.857308999715,
+    "validation_status": "approved",
+    "validated_at": "2026-10-08T16:46:42.313093Z",
+    "validated_by": "operator-001",
+    "validation_comment": null,
+    "retrieved_incident_count": 3,
+    "deployment_correlation_count": 1,
+    "llm_duration_ms": 4686.742298999889,
+    "total_duration_ms": 4691.857308999715
+  },
+  {
+    "request_id": "f85d3927-97fc-4ba5-bf97-74ced7c45f18",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T22:46:25.276389Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.013699987903237343,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.013699987903237343
+  },
+  {
+    "request_id": "ceed3114-82e6-4c4f-b7ae-92bdc5fe18e6",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T22:46:25.305139Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.01409999094903469,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.01409999094903469
+  },
+  {
+    "request_id": "059938d4-0573-4b79-8cbc-efeca9b75ce7",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T22:46:25.321382Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.010799994925037026,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.010799994925037026
+  },
+  {
+    "request_id": "5b261fe8-aebe-431a-a314-d98956ebcfca",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T22:48:44.403144Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred just 240 seconds before the incident. This matches the pattern of highly similar historical incidents (INC-0500 and INC-0510, similarity score 0.94) for the same service, which were confirmed to be caused by database connection pool exhaustion due to an N+1 query introduced in the new release."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 4707.376660000591,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 3,
+    "deployment_correlation_count": 1,
+    "llm_duration_ms": 4695.870499999728,
+    "total_duration_ms": 4707.376660000591
+  },
+  {
+    "request_id": "e05733e3-8c3d-4124-8cc5-75059917ce71",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:05:16.706730Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.01170000177808106,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.01170000177808106
+  },
+  {
+    "request_id": "27ba0e06-dac6-4e4c-a984-969886d6a80c",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:05:16.734893Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.013500000932253897,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.013500000932253897
+  },
+  {
+    "request_id": "d937ff56-126f-4ebd-9985-f66297d983ec",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:05:16.752471Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.011600001016631722,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.011600001016631722
+  },
+  {
+    "request_id": "e06e68c5-c579-4391-a906-f0819686f4d8",
+    "incident_id": "FRONTEND-001",
+    "created_at": "2026-10-08T23:05:52.638123Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+      "confidence": 0.9,
+      "reasoning": "A new deployment (DEP-002, version 2.14.3) for the payment-api service occurred 240 seconds before the incident. Historical incidents INC-0500 and INC-0510 for the same service share a high similarity score (0.94) and confirm that new releases introduced a 'Database connection pool exhaustion due to N+1 query in new release', which matches the pattern of this deployment-triggered incident."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "A deployment occurred shortly before the incident, and confirmed historical incidents with the same symptoms were resolved by rolling back the release.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-002"
+        ]
+      }
+    ],
+    "evidence": {
+      "incident_evidence": [
+        {
+          "incident_id": "INC-0500",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.8.9"
+          ],
+          "recent_deployment": "2.8.9"
+        },
+        {
+          "incident_id": "INC-0505",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "unknown",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Unknown",
+          "resolution": [
+            "Restarted pods. Works now."
+          ],
+          "recent_deployment": "2.11.9"
+        },
+        {
+          "incident_id": "INC-0510",
+          "similarity_score": 0.942857142857143,
+          "diagnosis_status": "confirmed",
+          "service": "payment-api",
+          "category": "connection_pool_exhaustion",
+          "symptoms": [
+            "HTTP 5xx",
+            "database connection timeouts"
+          ],
+          "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+          "resolution": [
+            "Rolled back deployment 2.12.1"
+          ],
+          "recent_deployment": "2.12.1"
+        }
+      ],
+      "deployment_evidence": [
+        {
+          "deployment_id": "DEP-002",
+          "service": "payment-api",
+          "version": "2.14.3",
+          "previous_version": "2.14.2",
+          "deployed_at": "2026-10-08T11:56:00",
+          "incident_time_delta": "PT4M",
+          "status": "success"
+        }
+      ]
+    },
+    "duration_ms": 4963.541485998576,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 3,
+    "deployment_correlation_count": 1,
+    "llm_duration_ms": 4953.548803998274,
+    "total_duration_ms": 4963.541485998576
+  },
+  {
+    "request_id": "9d29d0be-751e-40c0-b0b8-101c22db2ff2",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:12:16.267750Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.016700010746717453,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.016700010746717453
+  },
+  {
+    "request_id": "d9e10408-f031-4acb-afe5-30e1946adc68",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:12:16.295311Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.032800002372823656,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.032800002372823656
+  },
+  {
+    "request_id": "deb48a6e-f665-4231-b03f-e0d19f7f0ddb",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:12:16.316761Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.009700001101009548,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.009700001101009548
+  },
+  {
+    "request_id": "a039cec0-fccb-42c6-be15-1135574b2f2d",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:49:07.030088Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.01069999416358769,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.01069999416358769
+  },
+  {
+    "request_id": "345d2e1e-928c-49d1-82ac-6a54a1398988",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:49:07.060672Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.01790000533219427,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.01790000533219427
+  },
+  {
+    "request_id": "649faf09-7df6-47c4-bd6f-4d2b7bc8f0bf",
+    "incident_id": "CURRENT-001",
+    "created_at": "2026-10-08T23:49:07.078864Z",
+    "status": "recommendations_ready",
+    "diagnosis": {
+      "root_cause": "Database connection pool exhaustion",
+      "confidence": 0.95,
+      "reasoning": "A recent deployment occurred shortly before the incident and historical incidents show the same failure pattern."
+    },
+    "recommended_actions": [
+      {
+        "action": "Roll back deployment 2.14.3",
+        "rationale": "The deployment occurred shortly before the incident.",
+        "priority": 1,
+        "evidence_ids": [
+          "INC-0500",
+          "INC-0510",
+          "DEP-001"
+        ]
+      }
+    ],
+    "evidence": null,
+    "duration_ms": 0.013599987141788006,
+    "validation_status": "pending",
+    "validated_at": null,
+    "validated_by": null,
+    "validation_comment": null,
+    "retrieved_incident_count": 0,
+    "deployment_correlation_count": 0,
+    "llm_duration_ms": null,
+    "total_duration_ms": 0.013599987141788006
+  }
+]

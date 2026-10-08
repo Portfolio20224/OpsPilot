@@ -1,0 +1,17 @@
+{
+  "id": "INC-1042",
+  "service": "payment-api",
+  "severity": "SEV-2",
+  "status": "investigating",
+  "started_at": "2026-10-06T09:17:00",
+  "symptoms": [
+    "Error rate: 18%",
+    "HTTP 5xx on payment endpoints"
+  ],
+  "recent_deployment": {
+    "version": "2.14.3",
+    "deployed_at": "2026-10-06T09:03:00",
+    "previous_version": "2.14.2"
+  },
+  "diagnosis_status": "investigating"
+}

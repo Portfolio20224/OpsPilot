@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opspilot-api
+    environment:
+      OPSPILOT_API_HOST: 0.0.0.0
+      OPSPILOT_API_PORT: 8000
+      OPSPILOT_GEMINI_MODEL: gemini-3.5-flash
+      OPSPILOT_ANALYSIS_HISTORY_PATH: acmepay_dataset/analysis_history.json
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./acmepay_dataset:/app/acmepay_dataset
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: opspilot-frontend
+    environment:
+      OPSPILOT_API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api

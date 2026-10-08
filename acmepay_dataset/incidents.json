@@ -1,0 +1,736 @@
+[
+  {
+    "id": "INC-0500",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2025-02-18T22:02:36",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+    "resolution": [
+      "Rolled back deployment 2.8.9"
+    ],
+    "recent_deployment": "2.8.9",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0501",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2026-05-05T20:47:57",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0502",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-02-02T22:24:10",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0503",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-03-12T14:41:31",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.10.8",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0504",
+    "service": "api-gateway",
+    "severity": "SEV-1",
+    "timestamp": "2026-08-09T15:21:52",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0505",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2025-04-22T07:00:08",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.11.9",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0506",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2025-09-10T08:22:39",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0507",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2025-02-17T00:08:19",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0508",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2026-02-10T06:12:34",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Logic bug / Syntax error in routing controller",
+    "resolution": [
+      "Rolled back deployment 2.9.3"
+    ],
+    "recent_deployment": "2.9.3",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0509",
+    "service": "api-gateway",
+    "severity": "SEV-2",
+    "timestamp": "2025-06-24T19:50:15",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "External provider Adyen degraded",
+    "resolution": [
+      "Flipped circuit breaker to fallback mode (FRAUD_CHECK_ENABLED=false)"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0510",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-03-28T01:02:35",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+    "resolution": [
+      "Rolled back deployment 2.12.1"
+    ],
+    "recent_deployment": "2.12.1",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0511",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-05-03T03:59:26",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0512",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-05-15T03:19:58",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0513",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-05-17T03:16:42",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Logic bug / Syntax error in routing controller",
+    "resolution": [
+      "Rolled back deployment 2.5.8"
+    ],
+    "recent_deployment": "2.5.8",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0514",
+    "service": "api-gateway",
+    "severity": "SEV-1",
+    "timestamp": "2026-05-11T13:05:21",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "External provider Adyen degraded",
+    "resolution": [
+      "Flipped circuit breaker to fallback mode (FRAUD_CHECK_ENABLED=false)"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0515",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-08-02T16:19:28",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.12.4",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0516",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2025-09-17T17:59:54",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0517",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2026-09-21T04:52:02",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0518",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2026-06-24T16:52:06",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.11.8",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0519",
+    "service": "api-gateway",
+    "severity": "SEV-1",
+    "timestamp": "2026-07-07T07:42:29",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0520",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2025-04-29T07:41:14",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+    "resolution": [
+      "Rolled back deployment 2.7.3"
+    ],
+    "recent_deployment": "2.7.3",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0521",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2025-05-15T00:53:43",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0522",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-06-15T01:52:55",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0523",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2025-05-04T06:38:54",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Logic bug / Syntax error in routing controller",
+    "resolution": [
+      "Rolled back deployment 2.5.0"
+    ],
+    "recent_deployment": "2.5.0",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0524",
+    "service": "api-gateway",
+    "severity": "SEV-2",
+    "timestamp": "2025-08-14T07:23:06",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0525",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-04-01T01:27:14",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.10.3",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0526",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2025-09-21T17:26:15",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0527",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-06-26T01:04:55",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0528",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-03-06T08:58:37",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.11.1",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0529",
+    "service": "api-gateway",
+    "severity": "SEV-3",
+    "timestamp": "2026-05-23T04:08:58",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "External provider Adyen degraded",
+    "resolution": [
+      "Flipped circuit breaker to fallback mode (FRAUD_CHECK_ENABLED=false)"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0530",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2026-08-24T17:14:27",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Database connection pool exhaustion due to N+1 query in new release",
+    "resolution": [
+      "Rolled back deployment 2.6.5"
+    ],
+    "recent_deployment": "2.6.5",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0531",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-01-12T07:45:49",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0532",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-09-09T20:07:02",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0533",
+    "service": "payment-api",
+    "severity": "SEV-1",
+    "timestamp": "2026-04-26T04:21:26",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Logic bug / Syntax error in routing controller",
+    "resolution": [
+      "Rolled back deployment 2.8.6"
+    ],
+    "recent_deployment": "2.8.6",
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0534",
+    "service": "api-gateway",
+    "severity": "SEV-2",
+    "timestamp": "2026-06-06T04:16:35",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "External provider Adyen degraded",
+    "resolution": [
+      "Flipped circuit breaker to fallback mode (FRAUD_CHECK_ENABLED=false)"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0535",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2026-05-26T09:58:05",
+    "category": "connection_pool_exhaustion",
+    "title": "Payment API elevated 5xx errors after deploy",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.5.1",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0536",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2025-05-14T17:01:29",
+    "category": "postgres_overload",
+    "title": "Database frozen during flash sale",
+    "symptoms": [
+      "HTTP 5xx",
+      "database connection timeouts",
+      "Postgres 100% CPU"
+    ],
+    "root_cause": "PostgreSQL overloaded by sheer volume, pool saturated but no bad query",
+    "resolution": [
+      "Increased connection pool size temporarily",
+      "Scaled read replicas"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0537",
+    "service": "payment-api",
+    "severity": "SEV-2",
+    "timestamp": "2025-07-01T08:33:33",
+    "category": "redis_timeout",
+    "title": "Redis CPU spike causing payment delays",
+    "symptoms": [
+      "RedisTimeoutError",
+      "High CPU usage on Redis",
+      "Payment latency"
+    ],
+    "root_cause": "Cache stampede expiring session keys",
+    "resolution": [
+      "Increased Redis connection timeout",
+      "Scaled Redis workers"
+    ],
+    "diagnosis_status": "confirmed"
+  },
+  {
+    "id": "INC-0538",
+    "service": "payment-api",
+    "severity": "SEV-3",
+    "timestamp": "2025-03-09T00:21:19",
+    "category": "bad_release",
+    "title": "Instant 500s on payment creation",
+    "symptoms": [
+      "SyntaxError in logs",
+      "Instant 5xx",
+      "No DB timeout"
+    ],
+    "root_cause": "Unknown",
+    "resolution": [
+      "Restarted pods. Works now."
+    ],
+    "recent_deployment": "2.10.7",
+    "diagnosis_status": "unknown"
+  },
+  {
+    "id": "INC-0539",
+    "service": "api-gateway",
+    "severity": "SEV-1",
+    "timestamp": "2025-04-27T21:43:54",
+    "category": "external_outage",
+    "title": "Adyen timeout cascade",
+    "symptoms": [
+      "504 Gateway Timeout",
+      "Workers blocked"
+    ],
+    "root_cause": "External provider Adyen degraded",
+    "resolution": [
+      "Flipped circuit breaker to fallback mode (FRAUD_CHECK_ENABLED=false)"
+    ],
+    "diagnosis_status": "confirmed"
+  }
+]
