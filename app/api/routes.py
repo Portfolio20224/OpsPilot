@@ -23,7 +23,11 @@ from app.core.observability import (
     generate_request_id,
     measure_operation,
 )
-from app.core.dashboard_metrics import calculate_dashboard_metrics
+from app.core.dashboard_metrics import (
+    calculate_dashboard_metrics,
+    calculate_daily_latency_trend,
+    calculate_service_correlations,
+)
 
 router = APIRouter(
     prefix="/incidents",
@@ -258,6 +262,65 @@ def get_dashboard_metrics(
         ]
 
     return calculate_dashboard_metrics(analyses)
+
+@analysis_router.get("/dashboard/latency-trend")
+def get_dashboard_latency_trend(
+    service: str | None = None,
+    severity: str | None = None,
+    start_date: date | None = None,
+    end_date: date | None = None,
+    analysis_repository=Depends(get_analysis_repository),
+) -> list[dict]:
+    """Return daily latency percentiles for the selected analyses."""
+    analyses = analysis_repository.get_all()
+
+    if service:
+        analyses = [a for a in analyses if a.service == service]
+
+    if severity:
+        analyses = [a for a in analyses if a.severity == severity]
+
+    if start_date:
+        analyses = [
+            a for a in analyses if a.created_at.date() >= start_date
+        ]
+
+    if end_date:
+        analyses = [
+            a for a in analyses if a.created_at.date() <= end_date
+        ]
+
+    return calculate_daily_latency_trend(analyses)
+
+
+@analysis_router.get("/dashboard/service-correlations")
+def get_dashboard_service_correlations(
+    service: str | None = None,
+    severity: str | None = None,
+    start_date: date | None = None,
+    end_date: date | None = None,
+    analysis_repository=Depends(get_analysis_repository),
+) -> list[dict]:
+    """Return deployment correlation rates by service."""
+    analyses = analysis_repository.get_all()
+
+    if service:
+        analyses = [a for a in analyses if a.service == service]
+
+    if severity:
+        analyses = [a for a in analyses if a.severity == severity]
+
+    if start_date:
+        analyses = [
+            a for a in analyses if a.created_at.date() >= start_date
+        ]
+
+    if end_date:
+        analyses = [
+            a for a in analyses if a.created_at.date() <= end_date
+        ]
+
+    return calculate_service_correlations(analyses)
 
 
 @analysis_router.get(

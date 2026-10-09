@@ -74,6 +74,28 @@ def fetch_metrics(api_url: str, filters: dict) -> dict:
     return response.json()
 
 
+@st.cache_data(ttl=15)
+def fetch_latency_trend(api_url: str, filters: dict) -> list[dict]:
+    response = requests.get(
+        f"{api_url}/analyses/dashboard/latency-trend",
+        params=filters,
+        timeout=10,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+@st.cache_data(ttl=15)
+def fetch_service_correlations(api_url: str, filters: dict) -> list[dict]:
+    response = requests.get(
+        f"{api_url}/analyses/dashboard/service-correlations",
+        params=filters,
+        timeout=10,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
 if st.button("Refresh data"):
     st.cache_data.clear()
     st.rerun()
@@ -165,10 +187,11 @@ filters = build_filters(
 try:
     analyses = fetch_filtered_analyses(API_URL, filters)
     metrics = fetch_metrics(API_URL, filters)
+    latency_trend = fetch_latency_trend(API_URL, filters)
+    service_correlations = fetch_service_correlations(API_URL, filters)
 except requests.RequestException:
-    st.error("Unable to load filtered data from the API.")
+    st.error("Unable to load dashboard data from the API.")
     st.stop()
-
 
 # KPI cards — all metrics are calculated by the backend.
 st.subheader("Operational KPIs")
@@ -291,6 +314,47 @@ if analyses:
 
 else:
     st.info("No analyses match the selected filters.")
+
+st.divider()
+st.subheader("Operational trends")
+
+chart_col1, chart_col2 = st.columns(2)
+
+with chart_col1:
+    st.markdown("**Daily analysis latency (p50 / p95)**")
+
+    if latency_trend:
+        latency_df = pd.DataFrame(latency_trend)
+        latency_df = latency_df.set_index("date")
+
+        st.line_chart(
+            latency_df[["p50_duration_ms", "p95_duration_ms"]]
+        )
+        st.caption(
+            "Daily percentiles of total analysis duration, in milliseconds."
+        )
+    else:
+        st.info("No latency measurements for this selection.")
+
+with chart_col2:
+    st.markdown("**Deployment correlations by service**")
+
+    if service_correlations:
+        correlation_df = pd.DataFrame(service_correlations)
+
+        correlation_df = correlation_df.set_index("service")
+
+        st.bar_chart(
+            correlation_df[["correlation_rate"]]
+        )
+
+        st.caption(
+            "Share of analyses with at least one deployment correlation. "
+            "Correlation does not prove causality."
+        )
+    else:
+        st.info("No service correlation data for this selection.")
+
 
 st.divider()
 

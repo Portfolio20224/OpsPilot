@@ -2,6 +2,7 @@ from statistics import mean, median
 from typing import Any
 
 from app.models.audit import AnalysisRecord, ValidationStatus
+from collections import defaultdict
 
 
 def percentile(values: list[float], percentile_value: float) -> float | None:
@@ -115,3 +116,67 @@ def calculate_dashboard_metrics(
             else None
         ),
     }
+
+
+def calculate_daily_latency_trend(
+    analyses: list[AnalysisRecord],
+) -> list[dict]:
+    """Calculate daily p50 and p95 analysis durations."""
+    durations_by_day: dict[str, list[float]] = defaultdict(list)
+
+    for analysis in analyses:
+        if analysis.total_duration_ms is None:
+            continue
+
+        day = analysis.created_at.date().isoformat()
+        durations_by_day[day].append(
+            float(analysis.total_duration_ms)
+        )
+
+    trend = []
+
+    for day, durations in sorted(durations_by_day.items()):
+        trend.append(
+            {
+                "date": day,
+                "analysis_count": len(durations),
+                "p50_duration_ms": percentile(durations, 0.50),
+                "p95_duration_ms": percentile(durations, 0.95),
+            }
+        )
+
+    return trend
+
+
+def calculate_service_correlations(
+    analyses: list[AnalysisRecord],
+) -> list[dict]:
+    """Calculate deployment correlation rates by service."""
+    service_stats: dict[str, dict[str, int]] = defaultdict(
+        lambda: {"analysis_count": 0, "correlated_count": 0}
+    )
+
+    for analysis in analyses:
+        service = analysis.service or "Unknown"
+
+        service_stats[service]["analysis_count"] += 1
+
+        if analysis.deployment_correlation_count > 0:
+            service_stats[service]["correlated_count"] += 1
+
+    results = []
+
+    for service, stats in sorted(service_stats.items()):
+        total = stats["analysis_count"]
+        correlated = stats["correlated_count"]
+
+        results.append(
+            {
+                "service": service,
+                "analysis_count": total,
+                "correlated_count": correlated,
+                "correlation_rate": correlated / total if total else 0.0,
+            }
+        )
+
+    return results
