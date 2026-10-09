@@ -136,6 +136,8 @@ def analyze_incident(
         ),
         llm_duration_ms=state.llm_duration_ms,
         total_duration_ms=state.total_duration_ms,
+        service=incident.service,
+        severity=incident.severity.value,
     )
 
     analysis_repository.save(analysis)
@@ -174,6 +176,18 @@ def get_incident_analyses(
     analysis_repository=Depends(get_analysis_repository),
 ):
     return analysis_repository.get_by_incident_id(incident_id)
+
+
+@analysis_router.get(
+    "",
+    response_model=list[AnalysisRecord],
+)
+def get_all_analyses(
+    analysis_repository=Depends(get_analysis_repository),
+) -> list[AnalysisRecord]:
+    """Return all analyses, newest first."""
+    return analysis_repository.get_all()
+
 
 
 @analysis_router.get(

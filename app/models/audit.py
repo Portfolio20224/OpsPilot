@@ -36,6 +36,9 @@ class AnalysisRecord(BaseModel):
     llm_duration_ms: float | None = None
     total_duration_ms: float | None = None
 
+    service: str | None = None
+    severity: str | None = None
+
 class ValidationRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 

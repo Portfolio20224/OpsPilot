@@ -103,3 +103,18 @@ class AnalysisRepository:
             return record
 
         return None
+    
+    def get_all(self) -> list[AnalysisRecord]:
+        analyses = self._load()
+
+        records = [
+            AnalysisRecord.model_validate(item)
+            for item in analyses
+        ]
+
+        records.sort(
+            key=lambda analysis: analysis.created_at,
+            reverse=True,
+        )
+
+        return records

@@ -154,3 +154,44 @@ def test_analysis_repository_returns_none_for_unknown_validation(tmp_path):
     )
 
     assert result is None
+
+
+
+def test_get_all_returns_analyses_newest_first(
+    tmp_path,
+):
+    repository = AnalysisRepository(tmp_path / "analyses.json")
+
+    repository.save(
+        AnalysisRecord(
+            request_id="req-old",
+            incident_id="INC-001",
+            created_at=datetime(
+                2026, 10, 8, 10, 0, tzinfo=timezone.utc
+            ),
+            status="human_validation_required",
+            diagnosis=None,
+            recommended_actions=[],
+            evidence=None,
+        )
+    )
+
+    repository.save(
+        AnalysisRecord(
+            request_id="req-new",
+            incident_id="INC-001",
+            created_at=datetime(
+                2026, 10, 8, 11, 0, tzinfo=timezone.utc
+            ),
+            status="recommendations_ready",
+            diagnosis=None,
+            recommended_actions=[],
+            evidence=None,
+        )
+    )
+
+    results = repository.get_all()
+
+    assert len(results) == 2
+    assert results[1].request_id == "req-old"
+    assert results[0].request_id == "req-new"
