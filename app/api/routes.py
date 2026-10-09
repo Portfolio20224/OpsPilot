@@ -1,5 +1,5 @@
 import logging
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 import time
 logger = logging.getLogger("opspilot")
 from fastapi import APIRouter, Depends, HTTPException
@@ -23,6 +23,7 @@ from app.core.observability import (
     generate_request_id,
     measure_operation,
 )
+from app.core.dashboard_metrics import calculate_dashboard_metrics
 
 router = APIRouter(
     prefix="/incidents",
@@ -183,11 +184,80 @@ def get_incident_analyses(
     response_model=list[AnalysisRecord],
 )
 def get_all_analyses(
+    service: str | None = None,
+    severity: str | None = None,
+    start_date: date | None = None,
+    end_date: date | None = None,
     analysis_repository=Depends(get_analysis_repository),
 ) -> list[AnalysisRecord]:
-    """Return all analyses, newest first."""
-    return analysis_repository.get_all()
+    """Return analyses with optional filters, newest first."""
+    analyses = analysis_repository.get_all()
 
+    if service:
+        analyses = [
+            analysis
+            for analysis in analyses
+            if analysis.service == service
+        ]
+
+    if severity:
+        analyses = [
+            analysis
+            for analysis in analyses
+            if analysis.severity == severity
+        ]
+
+    if start_date:
+        analyses = [
+            analysis
+            for analysis in analyses
+            if analysis.created_at.date() >= start_date
+        ]
+
+    if end_date:
+        analyses = [
+            analysis
+            for analysis in analyses
+            if analysis.created_at.date() <= end_date
+        ]
+
+    return analyses
+
+
+@analysis_router.get("/dashboard/metrics")
+def get_dashboard_metrics(
+    service: str | None = None,
+    severity: str | None = None,
+    start_date: date | None = None,
+    end_date: date | None = None,
+    analysis_repository=Depends(get_analysis_repository),
+) -> dict:
+    """Return dashboard metrics for the selected filters."""
+    analyses = analysis_repository.get_all()
+
+    if service:
+        analyses = [
+            a for a in analyses if a.service == service
+        ]
+
+    if severity:
+        analyses = [
+            a for a in analyses if a.severity == severity
+        ]
+
+    if start_date:
+        analyses = [
+            a for a in analyses
+            if a.created_at.date() >= start_date
+        ]
+
+    if end_date:
+        analyses = [
+            a for a in analyses
+            if a.created_at.date() <= end_date
+        ]
+
+    return calculate_dashboard_metrics(analyses)
 
 
 @analysis_router.get(
