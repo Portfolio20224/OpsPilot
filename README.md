@@ -17,6 +17,11 @@ When an incident occurs, responders typically need to correlate several sources 
 
 OpsPilot brings these signals together into an evidence package, uses an LLM to reason over that evidence, and produces a diagnosis and recommended actions that remain subject to **human validation**.
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://opspilot-assistant.streamlit.app/)
+
+🚀 **[Try the live demo](https://opspilot-assistant.streamlit.app/)** · 📖 **[API docs (Swagger)](https://opspilot-api-s6e0.onrender.com/docs)**
+
+> ⏳ The API runs on a free hosting tier. After a period of inactivity, the **first request can take up to a minute** while the server wakes up. Subsequent requests are fast.
 ---
 
 ## Problem
@@ -142,6 +147,34 @@ Roll back deployment 2.14.3
 ```
 
 The recommendation contains explicit evidence identifiers so the operator can inspect why it was produced.
+
+---
+
+## Live demo
+
+A public demo is available at **https://opspilot-assistant.streamlit.app/**
+
+The demo runs against the synthetic AcmePay dataset. To try it:
+
+1. Open the app (if it shows a "Wake up" button, click it).
+2. Submit an incident, for example the `payment-api` SEV-1 incident from the [API section](#api).
+3. Wait for the analysis. The first request may take about a minute if the API is asleep.
+4. Inspect the diagnosis, the confidence score, the recommended actions and the evidence identifiers.
+5. Approve or reject the recommendation to see the audit trail.
+
+**Demo limitations**
+
+* The API is hosted on Render's free tier (cold starts of 30–60 seconds).
+* The audit history is stored on an ephemeral filesystem and is reset on every redeploy or restart.
+* The demo uses a shared LLM API key with limited quota: please do not submit sensitive or real production data.
+* All incidents, deployments and runbooks are synthetic.
+
+**Hosting**
+
+| Component | Platform |
+|-----------|----------|
+| Frontend (Streamlit) | Streamlit Community Cloud |
+| API (FastAPI, Docker) | Render |
 
 ---
 
@@ -440,7 +473,9 @@ opspilot/
 ├── frontend/
 │   ├── app.py
 │   └── Dockerfile
-│
+│   ├── pages/
+│   │   └── 1_Dashboards.py
+│   └── requirements.txt
 ├── tests/
 │
 ├── Dockerfile
@@ -467,7 +502,7 @@ Create a `.env` file:
 
 ```env
 GOOGLE_API_KEY=your_gemini_api_key
-OPSPILOT_GEMINI_MODEL=gemini-2.5-flash
+OPSPILOT_GEMINI_MODEL=gemini-3.5-flash
 ```
 
 The `.env` file should never be committed to Git.
@@ -515,6 +550,24 @@ Expected response:
 }
 ```
 
+---
+
+## Deploy your own instance
+
+**API (Render, Docker web service)**
+
+* Create a Web Service from this repository with the `Docker` runtime (the root `Dockerfile` is used).
+* The container listens on `$PORT` (defaults to `8000` locally).
+* Set the environment variables `GOOGLE_API_KEY` and `OPSPILOT_GEMINI_MODEL`.
+
+**Frontend (Streamlit Community Cloud)**
+
+* Main file path: `frontend/app.py` (dependencies are read from `frontend/requirements.txt`).
+* In *Advanced settings → Secrets*, set:
+
+```toml
+OPSPILOT_API_URL = "https://<your-api>.onrender.com"
+```
 ---
 
 ## API
