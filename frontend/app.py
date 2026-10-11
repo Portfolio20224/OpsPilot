@@ -88,7 +88,7 @@ if st.button(
             response = requests.post(
                 f"{API_URL}/incidents/analyze",
                 json=incident_input,
-                timeout=60,
+                timeout=90,
             )
         except requests.RequestException as exc:
             st.error(f"Unable to reach OpsPilot API: {exc}")
