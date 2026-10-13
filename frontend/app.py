@@ -9,6 +9,13 @@ API_URL = os.getenv(
 )
 
 
+def call_api(method: str, path: str, **kwargs):
+    """call API with timeout."""
+    kwargs.setdefault("timeout", 90)
+    with st.spinner("The API is starting up; please wait a few seconds..."):
+        return requests.request(method, f"{API_URL}{path}", **kwargs)
+
+
 st.set_page_config(
     page_title="OpsPilot",
     page_icon="🚨",
@@ -85,11 +92,7 @@ if st.button(
 
     with st.spinner("Analyzing incident..."):
         try:
-            response = requests.post(
-                f"{API_URL}/incidents/analyze",
-                json=incident_input,
-                timeout=90,
-            )
+            response = call_api("POST", "/incidents/analyze", json=incident_input)
         except requests.RequestException as exc:
             st.error(f"Unable to reach OpsPilot API: {exc}")
             st.stop()
@@ -385,16 +388,13 @@ if "analysis" in st.session_state:
 
             with st.spinner("Recording validation..."):
                 try:
-                    response = requests.post(
-                        f"{API_URL}/analyses/"
-                        f"{request_id}/validation",
-                        json={
-                            "status": validation_status_value,
-                            "validated_by": validated_by,
-                            "comment": comment or None,
-                        },
-                        timeout=10,
-                    )
+                    response = call_api("GET", 
+                                        f"/incidents/{request_id}/analyses",
+                                        json={
+                                            "status": validation_status_value,
+                                            "validated_by": validated_by,
+                                            "comment": comment or None,
+                        })
                 except requests.RequestException as exc:
                     st.error(
                         f"Unable to reach OpsPilot API: {exc}"

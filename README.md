@@ -757,8 +757,8 @@ These are deliberate boundaries for the MVP rather than hidden limitations.
 
 ### Phase 2 — Operationalization
 
+* [x] Investigation performance dashboard
 * [ ] Time-to-First-Action benchmark
-* [ ] Investigation performance dashboard
 * [ ] Persistent production database
 * [ ] Authentication / authorization
 * [ ] Better structured logging
